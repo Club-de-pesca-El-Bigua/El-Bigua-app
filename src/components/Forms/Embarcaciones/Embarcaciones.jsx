@@ -2,7 +2,7 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
-const Embarcacion = (embarcacionData, editable, setShowSuccessMessage) => {
+const Embarcacion = ({ embarcacionData, editable, setShowSuccessMessage }) => {
   // validaciones con yup
   const validationSchema = Yup.object({});
 
@@ -18,7 +18,6 @@ const Embarcacion = (embarcacionData, editable, setShowSuccessMessage) => {
       >
         {({ isSubmitting, isValid }) => (
           <Form>
-
             {/* matrícula */}
             <div>
               <p>Datos de la matrícula:</p>
@@ -134,7 +133,7 @@ const Embarcacion = (embarcacionData, editable, setShowSuccessMessage) => {
                   disabled={!editable}
                 />
               </div>
-                {/* acá va algo que le avise que está vencidO */}
+              {/* acá va algo que le avise que está vencidO */}
             </div>
             {/* fin datos del seguro */}
 
@@ -145,12 +144,11 @@ const Embarcacion = (embarcacionData, editable, setShowSuccessMessage) => {
             </div>
             {/* fin información adicional */}
 
-            <button
-              type="submit"
-              disabled={!editable || isSubmitting || !isValid}
-            >
-              Guardar
-            </button>
+            {editable && (
+              <button type="submit"  disabled={!editable || isSubmitting || !isValid}>
+                Guardar
+              </button>
+            )}
           </Form>
         )}
       </Formik>
