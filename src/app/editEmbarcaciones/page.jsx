@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Embarcacion from "@/components/Forms/Embarcaciones/Embarcaciones";
+import BackButton from "@/components/BackButton/BackButton";
 
 const editEmbarcaciones = () => {
   // estado para manejar si el formulario está en modo de edición o no
@@ -73,7 +74,9 @@ const editEmbarcaciones = () => {
           {goToTop()}
         </div>
       )}
-
+<div>
+  <BackButton/>
+</div>
       <div>
         <button onClick={handleEditClick}>
           {editable ? <p className="cancel-button">Cancelar</p> : "Editar"}

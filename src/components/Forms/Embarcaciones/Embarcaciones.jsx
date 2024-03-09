@@ -2,6 +2,7 @@ import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
+
 const Embarcacion = ({ embarcacionData, editable, setShowSuccessMessage }) => {
   // validaciones con yup
   const validationSchema = Yup.object({});
