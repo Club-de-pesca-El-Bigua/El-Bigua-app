@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Vehiculo from "@/components/Forms/Vehículo/Vehiculo";
+import Usuario from "@/components/Forms/Usuario/Usuario";
 import BackButton from "@/components/BackButton/BackButton";
 
 const editCar = () => {
@@ -10,20 +10,22 @@ const editCar = () => {
   // estado  para mostrar un mensaje de éxito después de guardar los cambios
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
 
-  // Estado para almacenar los datos del vehiculo que se editarán
-  const [carData, setCarData] = useState({
-    plate: "",
-    carBrand: "",
-    year: "",
-    carcolor: "",
-    infoCar: ""
-    
+  // Estado para almacenar los datos del usuario que se editarán
+  const [userData, setUserData] = useState({
+    userNumber: "",
+    name: "",
+    lastname: "",
+    dni: "",
+    phone: "",
+    nauticalLicense: "",
+    expiration: "",
+    observations: "",
   });
 
   useEffect(() => {
-    // Función para obtener los datos del vehiculo
+    // Función para obtener los datos del usuario
     //Aca hay que hacer una peticion de tipo get para traerme
-    // los datos del vehiculo desde el back
+    // los datos del usuario desde el back
   }, []);
 
   // función para manejar el botón de editar
@@ -34,7 +36,7 @@ const editCar = () => {
   // Función para manejar los cambios en los campos del formulario
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setCarData((prevData) => ({
+    setUserData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
@@ -69,9 +71,9 @@ const editCar = () => {
           {goToTop()}
         </div>
       )}
-<div>
-    <BackButton/>
-</div>
+      <div>
+        <BackButton />
+      </div>
       <div>
         <button onClick={handleEditClick}>
           {editable ? <p className="cancel-button">Cancelar</p> : "Editar"}
@@ -80,7 +82,7 @@ const editCar = () => {
 
       <div className={`profile-edit ${editable ? "" : "hidden"}`}>
         <Vehiculo
-          initialValues={carData}
+          initialValues={userData}
           onSubmit={handleSubmit}
           onChange={handleChange}
           editable={editable}
