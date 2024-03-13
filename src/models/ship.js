@@ -1,28 +1,28 @@
-const mongoose = require("mongoose");
-const mongoosePaginate = require("mongoose-paginate"); // proporciona funcionalidad de paginacion en mongoDB de datos grandes
-const { boolean } = require("yup");
+import mongoose from "mongoose";
+import { Types, Schema, model, models } from 'mongoose';
+//import mongoosePaginate from "mongoose-paginate"; // proporciona funcionalidad de paginacion en mongoDB de datos grandes
 
-//modelo de embarcacion
 
-const  ShipSchema = new mongoose.Schema
-({
-    registrationNumber  : { type: Number, required: true, }, // Número  de matricula
-    dueDate             : { type: Date, required: true }, // Vencimiento matricula
-    type                : { type: String , required: true }, // Tipo de Embarcacion 
-    color               : {type:String, required: true},   // Color
-    capacity            : { type: Number, required: true }, // Capacidad 
-    brand               : { type: String, required: true } , // Marca
-    hp                  : { type: Number, required: true} , // HP o Potencia
-    fantasyName         : { type: String, required: true }, // Nombre Fantasia
-    insurer             : { type: String, required: true }, //Nombre del aseguradora
-    dueDateInsurance    : { type: Date, required: true }, // Fecha de Vencimiento del Seguro
-    info                : { type: String, required: true  }, // Informacion adicional
-    state               : { type: Boolean, defaultValue: true  }, // Para validar activo o desactivo Borrado Logico
+//Creamos el modelo de embarcacion a partir del Schema
+
+const shipSchema = mongoose.Schema({
+    registrationNumber: { type: String, required: [true, "Please complete the field"] },
+    dueDate:            { type: Date, required: [true, "Please complete the field"] },
+    type:               { type: String, required: [true, "Please complete the field"] },
+    color:              { type: String, required: [true, "Please complete the field"] },
+    capacity:           { type: Number, required: [true, "Please complete the field"] },
+    brand:              { type: String, required: [true, "Please complete the field"] },
+    hp:                 { type: Number, required: [true, "Please complete the field"] },
+    fantasyName:        { type: String, required: [true, "Please complete the field"] },
+    insurer:            { type: String, required: [true, "Please complete the field"] },
+    dueDateInsurance:   { type: Date, required: [true, "Please complete the field"] },
+    info:               { type: String, required: [true, "Please complete the field"] },
+    state:              { type: Boolean, default: true }, // Cambié defaultValue por default
 });
 
-    EmbarcaSchema.plugin(mongoosePaginate);
+   // EmbarcaSchema.plugin(mongoosePaginate);
 
-    module.exports= mongoose.model('Ship', ShipSchema) ;
+   export const ShipModel = mongoose.models.Ship || mongoose.model('Ship', shipSchema);
 
 
 
