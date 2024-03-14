@@ -1,16 +1,14 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import vehiculoValidationSchema from "./validacionesVehiculo";
 
 const Vehiculo = ({ carData, editable, setShowSuccessMessage }) => {
-  // validaciones con yup
-  const validationSchema = Yup.object({});
-
   return (
     <div>
       <h2>Ingresar/editar datos del vehículo</h2>
       <Formik
         initialValues={carData}
+        validationSchema={vehiculoValidationSchema}
         onSubmit={(values) => {
           // lógica para enviar los valores del formulario y mostrar mensaje de éxito
           console.log(values);
