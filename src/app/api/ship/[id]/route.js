@@ -1,9 +1,9 @@
 import connectDB from "@/libs/mongodb";
 import { ShipModel } from "@/models/ship";
 import { NextResponse } from "next/server";
-const mongoose = require('mongoose');
 
-// Metodo para buscar barcos por matricula 
+
+// Metodo GET para buscar barcos por matricula 
 const GET = async (req, {params})=>{
     
     await connectDB();
@@ -24,7 +24,7 @@ const GET = async (req, {params})=>{
     }
 }
 
-//Metodo para eliminar Registro por completo
+//Metodo DELETE para eliminar Registro por completo
 const DELETE = async (req, { params }) => {
     await connectDB();
     const registrationNumber = params.id;
@@ -45,7 +45,7 @@ const DELETE = async (req, { params }) => {
     }
 };
 
-//Metodo para Actualizar Registro por completo
+//Metodo PUT para Actualizar Registro por completo
 const PUT = async (request, { params }) => {
     await connectDB();
     const registrationNumber = params.id;

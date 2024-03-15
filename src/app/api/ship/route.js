@@ -2,8 +2,7 @@ import connectDB from "@/libs/mongodb";
 import { NextResponse } from "next/server";
 import { ShipModel } from "@/models/ship";
 
-// Método para Crear un barco en la BD si no existe o devolver el que ya existe.
-// POST
+// Método POST para Crear un barco en la BD si no existe
 const POST = async (req, res) => {
     await connectDB();
     try {
@@ -23,7 +22,7 @@ const POST = async (req, res) => {
     } 
 };
 
-
+// Metodo GET para buscar todo los  Barcos en la BD
 const GET = async (req, res)=>{
         await connectDB();
         try{

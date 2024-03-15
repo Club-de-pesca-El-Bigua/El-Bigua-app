@@ -22,7 +22,7 @@ const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
             {/* num de usuario */}
             <div>
               <div>
-                <label htmlFor="userNumber">N° de usuario</label>
+                <label htmlFor="userNumber">N° de socio</label>
                 <Field type="text" name="userNumber" disabled={!editable} />
               </div>
               {/* fin num usuario */}

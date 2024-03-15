@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Types, Schema, model, models } from 'mongoose';
+//import { Types, Schema, model, models } from 'mongoose';
 //import mongoosePaginate from "mongoose-paginate"; // proporciona funcionalidad de paginacion en mongoDB de datos grandes
 
 
