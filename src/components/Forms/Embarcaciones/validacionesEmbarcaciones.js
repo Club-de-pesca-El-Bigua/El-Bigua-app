@@ -11,7 +11,7 @@ const embarcacionValidationSchema = Yup.object({
     .required("La fecha de vencimiento es obligatoria")
     .matches(
       /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
-      "Formato de fecha inválido. Debe ser DIA/MES/AÑO"
+      "Formato de fecha inválido. Debe ser dd/mm/aaaa"
     ),
   //falta completar
   type: Yup.string().required("El tipo de embarcación es obligatorio"),
@@ -46,7 +46,7 @@ const embarcacionValidationSchema = Yup.object({
     .required("La fecha de vencimiento del seguro es obligatoria")
     .matches(
       /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
-      "Formato de fecha inválido. Debe ser DIA/MES/AÑO"
+      "Formato de fecha inválido. Debe ser dd/mm/aaaa"
     ),
   //falta completar
   info: Yup.string(),
