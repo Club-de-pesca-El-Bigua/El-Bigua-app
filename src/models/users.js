@@ -1,39 +1,16 @@
-import { Types, Schema, model, models } from 'mongoose';
+import mongoose from 'mongoose';
 
-const userSchema = new Schema({
+const userSchema = mongoose.Schema({
 
-    userNumber: {
-        type: Number,
-        required: true
-    },
-    name: {
-        type: String,
-        required: true
-    },
-    lastname: {
-        type: String,
-        required: true
-    },
-    dni: {
-        type: Number,
-        required: true
-    },
-    phone: {
-        type: Number,
-        required: true
-    },
-    nauticalLicense: {
-        type: String,
-        required: false,
-        expiration: {
-            type: Date,
-            require: false
-        },
-        observations: {
-            type: String,
-            require: false
-        },
-    },
+    userNumber          : { type: String, required: [true, "Please complete the field"] }, //Numero de Socio
+    name                : { type: String, required: [true, "Please complete the field"] }, //Nombre
+    lastname            : { type: String, required: [true, "Please complete the field"] }, //Apellido
+    dni                 : { type: Number, required: [true, "Please complete the field"] }, //Numero DNI
+    phone               : { type: Number, required: [true, "Please complete the field"] }, //Numero de TLF 
+    nauticalLicense     : { type: String, required: [true, "Please complete the field"] }, //Numero de licencia marina
+    expiration          : { type: Date,   required: [true, "Please complete the field"] }, //Vencimiento de Licencia
+    observations        : { type: String, required: [true, "Please complete the field"] }, //Observaciones del cliente
+    state:              { type: Boolean, default: true },  
 });
 
-export default models.Users || model('Users', userSchema);
+export const UserModel = mongoose.models.User|| mongoose.model('User', userSchema);

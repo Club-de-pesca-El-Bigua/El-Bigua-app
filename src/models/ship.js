@@ -7,7 +7,7 @@ import mongoose from "mongoose";
 
 const shipSchema = mongoose.Schema({
     registrationNumber: { type: String, required: [true, "Please complete the field"] },
-    dueDate:            { type: Date, required: [true, "Please complete the field"] },
+    dueDate:            { type: Date,   required: [true, "Please complete the field"] },
     type:               { type: String, required: [true, "Please complete the field"] },
     color:              { type: String, required: [true, "Please complete the field"] },
     capacity:           { type: Number, required: [true, "Please complete the field"] },
@@ -15,9 +15,9 @@ const shipSchema = mongoose.Schema({
     hp:                 { type: Number, required: [true, "Please complete the field"] },
     fantasyName:        { type: String, required: [true, "Please complete the field"] },
     insurer:            { type: String, required: [true, "Please complete the field"] },
-    dueDateInsurance:   { type: Date, required: [true, "Please complete the field"] },
+    dueDateInsurance:   { type: Date,   required: [true, "Please complete the field"] },
     info:               { type: String, required: [true, "Please complete the field"] },
-    state:              { type: Boolean, default: true }, // Cambié defaultValue por default
+    state:              { type: Boolean, default: true }, 
 });
 
    // EmbarcaSchema.plugin(mongoosePaginate);

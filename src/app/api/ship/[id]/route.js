@@ -34,9 +34,8 @@ const DELETE = async (req, { params }) => {
         
         const shipRemoved = await ShipModel.findOneAndDelete({ registrationNumber: registrationNumber });
         
-        if (!shipRemoved) {
-            return NextResponse.json({ message: `La Matrícula ${registrationNumber} no existe` }, { status: 404 });
-        } else {
+        if (!shipRemoved) return NextResponse.json({ message: `La Matrícula ${registrationNumber} no existe` }, { status: 404 });
+        else {
             return NextResponse.json({ message: `La Matrícula ${registrationNumber} ha sido Eliminada Correctamente` }, { status: 200 });
         }
     } catch (error) {

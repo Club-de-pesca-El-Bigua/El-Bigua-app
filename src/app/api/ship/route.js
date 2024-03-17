@@ -4,7 +4,7 @@ import { ShipModel } from "@/models/ship";
 
 // Método POST para Crear un barco en la BD si no existe
 const POST = async (req, res) => {
-    await connectDB();
+    await connectDB(); // validamos conexion con BD
     try {
      
         const body = await req.json();

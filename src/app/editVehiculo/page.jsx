@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Vehiculo from "@/components/Forms/Vehículo/Vehiculo";
+import Vehiculo from "@/components/Forms/editarVehículo/editarVehiculo";
 import BackButton from "@/components/BackButton/BackButton";
 
 const editCar = () => {

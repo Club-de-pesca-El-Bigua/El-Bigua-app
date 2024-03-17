@@ -1,9 +1,9 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Usuario from "@/components/Forms/Usuario/Usuario";
+import Usuario from "@/components/Forms/editarUsuario/editarUsuario";
 import BackButton from "@/components/BackButton/BackButton";
 
-const editCar = () => {
+const editUser = () => {
   // estado para manejar si el formulario está en modo de edición o no
   const [editable, setEditable] = useState(false);
 
@@ -34,13 +34,13 @@ const editCar = () => {
   };
 
   // Función para manejar los cambios en los campos del formulario
-  const handleChange = (event) => {
-    const { name, value } = event.target;
+  const handleChange = (name, value) => {
     setUserData((prevData) => ({
       ...prevData,
       [name]: value,
     }));
   };
+  
 
   // Función para enviar los datos del formulario
   const handleSubmit = async (values, { setSubmitting }) => {
@@ -81,7 +81,7 @@ const editCar = () => {
       </div>
 
       <div className={`profile-edit ${editable ? "" : "hidden"}`}>
-        <Vehiculo
+        <Usuario
           initialValues={userData}
           onSubmit={handleSubmit}
           onChange={handleChange}
@@ -93,4 +93,4 @@ const editCar = () => {
   );
 };
 
-export default editCar;
+export default editUser;
