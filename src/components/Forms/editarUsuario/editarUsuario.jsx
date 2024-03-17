@@ -1,16 +1,16 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import usuarioValidationSchema from "./validacionesUsuario";
+import usuarioValidationSchema from "../../Validaciones/validacionesUsuario";
 
 
-const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
+const Usuario = ({ userData, editable, setShowSuccessMessage }) => {
  
 
   return (
     <div>
       <h2>Ingresar/editar datos del usuario</h2>
       <Formik
-        initialValues={carData}
+        initialValues={userData}
         validationSchema={usuarioValidationSchema}
         onSubmit={(values) => {
           // lógica para enviar los valores del formulario y mostrar mensaje de éxito
@@ -24,6 +24,7 @@ const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
               <div>
                 <label htmlFor="userNumber">N° de usuario</label>
                 <Field type="text" name="userNumber" disabled={!editable} />
+                <ErrorMessage name="userNumber" component="div" className="error-message" />
               </div>
               {/* fin num usuario */}
 
@@ -31,6 +32,7 @@ const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
               <div>
                 <label htmlFor="name">Nombre</label>
                 <Field type="text" name="name" disabled={!editable} />
+                <ErrorMessage name="name" component="div" className="error-message" />
               </div>
               {/* fin nombre */}
 
@@ -38,6 +40,7 @@ const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
               <div>
                 <label htmlFor="lastname">Apellido</label>
                 <Field type="text" name="lastname" disabled={!editable} />
+                <ErrorMessage name="lastname" component="div" className="error-message" />
               </div>
               {/* fin apellido */}
 
@@ -46,6 +49,7 @@ const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
                 <label htmlFor="dni">DNI N°</label>
                 <p>Ingresar sólo números.Sin puntos ni espacios</p>
                 <Field type="text" name="dni" disabled={!editable} />
+                <ErrorMessage name="dni" component="div" className="error-message" />
               </div>
               {/* fin dni  */}
 
@@ -53,6 +57,7 @@ const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
               <div>
                 <label htmlFor="phone">Teléfono</label>
                 <Field type="text" name="phone" disabled={!editable} />
+                <ErrorMessage name="phone" component="div" className="error-message" />
               </div>
               {/* fin telefono  */}
 
@@ -60,12 +65,13 @@ const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
               <div>
                 <label htmlFor="nauticalLicense">Licencia Náutica</label>
                 <p>Colocar una R en caso de que la licencia no sea necesaria</p>
+                
                 <Field
                   type="text"
                   name="nauticalLicense"
                   disabled={!editable}
                 />
-
+                
                 {/* vencimiento */}
                 <div>
                   <label htmlFor="expiration">
@@ -74,12 +80,14 @@ const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
                   <Field type="text" name="expiration" disabled={!editable} />
                 </div>
                 {/* fin vencimiento */}
+                <ErrorMessage name="nauticalLicense" component="div" className="error-message" />
+
               </div>
               {/* fin licencia náutica  */}
 
               {/* infomarción adicional */}
               <div>
-                <label htmlFor="infoCar">Observaciones:</label>
+                <label htmlFor="infoUser">Observaciones:</label>
                 <Field as="textarea" name="observations" disabled={!editable} />
               </div>
               {/* fin información adicional */}
@@ -92,6 +100,7 @@ const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
                 Guardar
               </button>
             )}
+            
           </Form>
         )}
       </Formik>
@@ -99,4 +108,4 @@ const Usuario = ({ carData, editable, setShowSuccessMessage }) => {
   );
 };
 
-export default Vehiculo;
+export default Usuario;

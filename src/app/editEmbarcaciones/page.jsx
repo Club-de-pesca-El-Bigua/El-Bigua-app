@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Embarcacion from "@/components/Forms/Embarcaciones/Embarcaciones";
+import Embarcacion from "@/components/Forms/editarEmbarcaciones/editarEmbarcaciones";
 import BackButton from "@/components/BackButton/BackButton";
 
 const editEmbarcaciones = () => {

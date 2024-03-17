@@ -42,14 +42,17 @@ const embarcacionValidationSchema = Yup.object({
       /^[a-zA-Z0-9]+$/,
       "Solo se permiten letras y números en el campo de compañía aseguradora"
     ),
-  dueDateInsurance: Yup.date()
+    dueDateInsurance: Yup.string()
     .required("La fecha de vencimiento del seguro es obligatoria")
-    .matches(
-      /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
-      "Formato de fecha inválido. Debe ser DIA/MES/AÑO"
+    .test(
+      "valid-format",
+      "Formato de fecha inválido. Debe ser DIA/MES/AÑO",
+      (value) => {
+        if (!value) return true;
+        const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
+        return regex.test(value);
+      }
     ),
-  //falta completar
-  info: Yup.string(),
-});
+  });
 
 export default embarcacionValidationSchema;
