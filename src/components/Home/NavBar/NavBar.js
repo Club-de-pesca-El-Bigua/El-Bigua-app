@@ -1,57 +1,50 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import "@/components/Home/NavBar/NavBar.css";
-import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 import logo from "@/public/assets/logobigua.jpeg";
+import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
+import style from "./NavBar.module.css";
 
 export default function NavBar() {
-  return (
-    <div className="bg-white shadow p-4">
-      <div className="flex items-center justify-between max-w-4x1 mx-auto ml-4">
-        <div className="flex items-center">
-          <Image src={logo} alt="elbigua_logo" width={50} height={50}></Image>
-          <h1 className="ml-2 text-xl font-bold">El Bigua</h1>
-        </div>
+  const navItems = [
+    {
+      name: "Inicio",
+      link: "/",
+    },
+    {
+      name: "Nuevo cliente",
+      link: "/usuario",
+    },
+    {
+      name: "Editar cliente",
+      link: "/editUsuario",
+    },
+  ];
 
-        <div className="flex items-center space-x-4">
-          <Link href="/">
-            <button
-              type="button"
-              style={{ backgroundColor: "#d8b104" }}
-              className="p-2"
-            >
-              Inicio{" "}
-            </button>
-          </Link>
-          <Link href="/usuario">
-            <button
-              type="button"
-              style={{ backgroundColor: "#d8b104" }}
-              className="p-2"
-            >
-              Nuevo Cliente
-            </button>
-          </Link>
-          <Link href="/editUsuario">
-            <button
-              type="button"
-              style={{ backgroundColor: "#d8b104" }}
-              className="p-2"
-            >
-              Editar Cliente
-            </button>
-          </Link>
-          <input
-            type="text"
-            placeholder="Buscar cliente"
-            className="border rounded px-2 py-1 mr-4"
-          ></input>
-          <button>
-            <MagnifyingGlass size={30} color="#d8b104" />
-          </button>
-        </div>
+  return (
+    <nav className={style.nav}>
+      <div className={style.logoContainer}>
+        <Image src={logo} alt="elbigua_logo" width={50} height={50} />
+        <h1>El Bigua</h1>
       </div>
-    </div>
+
+      <section>
+        <ul>
+          {navItems.map((item, index) => (
+            <li key={index}>
+              <Link href={item.link} key={item.name}>
+                <p>{item.name}</p>
+              </Link>
+            </li>
+          ))}
+        </ul>
+        <span>
+          <input type="text" placeholder="Buscar cliente"></input>
+          <button>
+            <MagnifyingGlass size={30} color="#E5BD03" weight="bold" />
+          </button>
+        </span>
+      </section>
+    </nav>
   );
 }

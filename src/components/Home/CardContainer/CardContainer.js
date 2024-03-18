@@ -6,16 +6,39 @@ export default function CardContainer() {
   return (
     <div className="p-3">
       <ul>
-        <Card></Card>
-      </ul>
-      <ul>
-        <Card></Card>
-      </ul>
-      <ul>
-        <Card></Card>
-      </ul>
-      <ul>
-        <Card></Card>
+        <li>
+          <Card />
+        </li>
+        <li>
+          <Card />
+        </li>
+        <li>
+          <Card />
+        </li>
+        <li>
+          <Card />
+        </li>
+        <li>
+          <Card />
+        </li>
+        <li>
+          <Card />
+        </li>
+        <li>
+          <Card />
+        </li>
+        <li>
+          <Card />
+        </li>
+        <li>
+          <Card />
+        </li>
+        <li>
+          <Card />
+        </li>
+        <li>
+          <Card />
+        </li>
       </ul>
     </div>
   );
