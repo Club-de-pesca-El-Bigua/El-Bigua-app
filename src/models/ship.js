@@ -6,18 +6,18 @@ import mongoose from "mongoose";
 //Creamos el modelo de embarcacion a partir del Schema
 
 const shipSchema = mongoose.Schema({
-    registrationNumber: { type: String, required: [true, "Please complete the field"] },
-    dueDate:            { type: Date,   required: [true, "Please complete the field"] },
-    type:               { type: String, required: [true, "Please complete the field"] },
-    color:              { type: String, required: [true, "Please complete the field"] },
-    capacity:           { type: Number, required: [true, "Please complete the field"] },
-    brand:              { type: String, required: [true, "Please complete the field"] },
-    hp:                 { type: Number, required: [true, "Please complete the field"] },
-    fantasyName:        { type: String, required: [true, "Please complete the field"] },
-    insurer:            { type: String, required: [true, "Please complete the field"] },
-    dueDateInsurance:   { type: Date,   required: [true, "Please complete the field"] },
-    info:               { type: String, required: [true, "Please complete the field"] },
-    state:              { type: Boolean, default: true }, 
+    registrationNumber: { type: String, required: [true, "Please complete the field"] }, // num de matricula
+    dueDate:            { type: Date,   required: [true, "Please complete the field"] }, //vencimiento matricula
+    type:               { type: String, required: [true, "Please complete the field"] }, //tipo de embarcacion
+    color:              { type: String, required: [true, "Please complete the field"] }, //color del casco
+    capacity:           { type: Number, required: [true, "Please complete the field"] }, //capacidad
+    brand:              { type: String, required: [true, "Please complete the field"] }, //marca
+    hp:                 { type: Number, required: [true, "Please complete the field"] }, //caballos de fuerza hp
+    fantasyName:        { type: String, required: [true, "Please complete the field"] }, //Nombre de fantasia
+    insurer:            { type: String, required: [true, "Please complete the field"] }, //nombre del seguro
+    dueDateInsurance:   { type: Date,   required: [true, "Please complete the field"] }, //vencimiento seguro
+    info:               { type: String, required: [true, "Please complete the field"] }, //Observaciones 
+    state:              { type: Boolean, default: true },                                //Estado para validar 
 });
 
    // EmbarcaSchema.plugin(mongoosePaginate);

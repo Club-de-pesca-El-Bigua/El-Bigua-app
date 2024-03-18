@@ -6,9 +6,9 @@ const userSchema = mongoose.Schema({
     name                : { type: String, required: [true, "Please complete the field"] }, //Nombre
     lastname            : { type: String, required: [true, "Please complete the field"] }, //Apellido
     dni                 : { type: Number, required: [true, "Please complete the field"] }, //Numero DNI
-    phone               : { type: Number, required: [true, "Please complete the field"] }, //Numero de TLF 
+    phone               : { type: String, required: [true, "Please complete the field"] }, //Numero de TLF 
     nauticalLicense     : { type: String, required: [true, "Please complete the field"] }, //Numero de licencia marina
-    expiration          : { type: Date,   required: [true, "Please complete the field"] }, //Vencimiento de Licencia
+    expirationNautica   : { type: Date,   required: [true, "Please complete the field"] }, //Vencimiento de Licencia
     observations        : { type: String, required: [true, "Please complete the field"] }, //Observaciones del cliente
     state:              { type: Boolean, default: true },  
 });

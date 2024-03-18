@@ -24,7 +24,7 @@ const AddUserForm = ({ onSubmit }) => {
         {({ isSubmitting, isValid }) => (
           <Form>
             <div>
-              <label htmlFor="userNumber">N° de usuario</label>
+              <label htmlFor="userNumber">N° de Socio</label>
               <Field type="number" name="userNumber" />
               <ErrorMessage name="userNumber" component="div" className="error-message" />
             </div>
@@ -49,7 +49,7 @@ const AddUserForm = ({ onSubmit }) => {
 
             <div>
               <label htmlFor="phone">Teléfono</label>
-              <Field type="number" name="phone" />
+              <Field type="text" name="phone" />
               <ErrorMessage name="phone" component="div" className="error-message" />
             </div>
 
