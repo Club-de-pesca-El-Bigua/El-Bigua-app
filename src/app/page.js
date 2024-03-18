@@ -1,24 +1,22 @@
-import React from 'react';
-import Link from 'next/link'; // Importa el componente Link de Next.js
+import { Manrope } from "next/font/google";
+import NavBar from "../components/Home/NavBar/NavBar";
+import ShipSearchBar from "@/components/Home/ShipSearchBar/shipSearchBar";
+import Filter from "@/components/Home/Filter/Filter";
+import CardContainer from "@/components/Home/CardContainer/CardContainer";
+
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 
 const HomePage = () => {
   return (
-    <div>
-      <h1>El Bigua</h1>
-      {/* Botones para redirigir a las páginas correspondientes */}
-      <div>
-        <Link href="/usuario">
-        
-            <button type="button">Nuevo Cliente</button>
-          
-        </Link>
-        <Link href="/editUsuario">
-          
-            <button type="button">Editar Cliente</button>
-          
-        </Link>
+    <main className={`${manrope.variable} font-mono`}>
+      <NavBar />
+      <ShipSearchBar />
+      <div className="mx-8">
+        <hr className="my-4 border-gray-300 " />
       </div>
-    </div>
+      <Filter />
+      <CardContainer />
+    </main>
   );
 };
 
