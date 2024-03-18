@@ -11,14 +11,13 @@ const SignOutLogo = <SignOut size={32} color="#ef4444" />;
 export default function Card() {
   const [icon, setIcon] = useState(null);
 
-  // Función para seleccionar aleatoriamente el icono
+  // Función para randomizar los iconos
   const randomizeIcon = () => {
     const randomNum = Math.random(); // Genera un número aleatorio entre 0 y 1
     // Si el número aleatorio es menor que 0.5, muestra el icono de Anchor, de lo contrario muestra el icono de SignOut
     setIcon(randomNum < 0.5 ? AnchorLogo : SignOutLogo);
   };
 
-  // Llama a la función randomizeIcon cuando el componente se monta
   useState(() => {
     randomizeIcon();
   }, []);

@@ -4,7 +4,7 @@ import Image from "next/image";
 import NavBar from "../components/Home/NavBar/NavBar";
 import ShipSearchBar from "@/components/Home/ShipSearchBar/shipSearchBar";
 import Filter from "@/components/Home/Filter/Filter";
-import CardContainer from "@/components/CardContainer/CardContainer";
+import CardContainer from "@/components/Home/CardContainer/CardContainer";
 
 const HomePage = () => {
   return (
@@ -17,11 +17,6 @@ const HomePage = () => {
       <Filter></Filter>
       <CardContainer></CardContainer>
     </div>
-    // <div>
-    //   <h1>El Bigua</h1>
-    //   {/* Botones para redirigir a las páginas correspondientes */}
-
-    // </div>
   );
 };
 

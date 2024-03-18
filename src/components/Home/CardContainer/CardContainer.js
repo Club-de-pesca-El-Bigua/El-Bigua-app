@@ -1,6 +1,6 @@
 import React from "react";
 import "../CardContainer/CardContainer.css";
-import Card from "../Home/Card/Card";
+import Card from "@/components/Home/Card/Card";
 
 export default function CardContainer() {
   return (
