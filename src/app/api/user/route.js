@@ -8,12 +8,12 @@ import userSchemaValidate from "@/app/servervalidation/userValidate";
 // Metodo PUT para crear user
 const POST = async (req, res) =>{
 
-    await connectDB()
+    await connectDB();
     try {
         const body = await req.json();
-        console.log("Esto llega del body", body)
+        console.log("Esto llega del body", body);
 
-        const bodyValidate = await userSchemaValidate.validateAsync(body)
+        const bodyValidate = await userSchemaValidate.validateAsync(body);
 
         const newUser = await UserModel.create(bodyValidate)
         console.log("esto es lo creado en BD", newUser)
