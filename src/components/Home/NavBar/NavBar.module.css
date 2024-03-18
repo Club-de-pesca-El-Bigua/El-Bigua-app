@@ -1,0 +1,68 @@
+.nav {
+  @apply sticky top-0 left-0 flex justify-between px-10 py-5 bg-white shadow;
+
+  .logoContainer {
+    @apply flex items-center gap-2;
+
+    & h1 {
+      @apply text-3xl uppercase;
+    }
+  }
+
+  & section {
+    @apply flex items-center gap-x-8;
+
+    & ul {
+      @apply flex items-center gap-x-5;
+
+      & li {
+        @apply relative px-2 py-1 overflow-hidden text-lg duration-150 rounded-md cursor-pointer;
+
+        & p {
+          @apply relative z-10;
+        }
+
+        &::before {
+          content: "";
+          @apply absolute top-0 left-0 z-0 w-full h-0 transition-all duration-200 bg-[#E5BD03] opacity-0;
+        }
+
+        &:hover {
+          @apply text-white;
+          &::before {
+            @apply h-full opacity-100;
+          }
+        }
+      }
+    }
+  }
+
+  & span {
+    @apply flex items-center gap-3;
+
+    & input {
+      @apply px-3 py-2 bg-transparent border-none rounded-xl;
+      box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.2);
+
+      &:focus {
+        @apply outline-none bg-slate-50/35;
+      }
+
+      &::placeholder {
+        @apply text-slate-500/50;
+      }
+    }
+
+    & button {
+      @apply duration-150;
+
+      &:hover {
+        @apply scale-110;
+      }
+
+      &:active {
+        @apply scale-90;
+      }
+    }
+  }
+}
