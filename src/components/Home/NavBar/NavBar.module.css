@@ -33,6 +33,12 @@
             @apply h-full opacity-100;
           }
         }
+        &.active {
+          @apply text-white shadow-md;
+          &::before {
+            @apply h-full opacity-100;
+          }
+        }
       }
     }
   }
