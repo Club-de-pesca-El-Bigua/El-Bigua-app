@@ -1,6 +1,8 @@
 import "./globals.css";
-import { Inter } from "next/font/google";
-const inter = Inter({ subsets: ["latin"] });
+import { Manrope } from "next/font/google";
+import NavBar from "@/components/Home/NavBar/NavBar";
+
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope" });
 
 export const metadata = {
   title: "Create Next App",
@@ -10,7 +12,11 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className} style={{ backgroundColor: "#f7f7f7" }}>
+      <body
+        className={`${manrope.variable} font-mono`}
+        style={{ backgroundColor: "#f7f7f7" }}
+      >
+        <NavBar />
         {children}
       </body>
     </html>
