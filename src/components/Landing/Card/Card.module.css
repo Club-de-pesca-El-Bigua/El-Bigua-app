@@ -1,0 +1,55 @@
+.cardContainer {
+  @apply relative overflow-x-auto shadow-lg max-h-[400px] sm:rounded-lg;
+
+  & table {
+    @apply relative w-full text-sm text-left text-gray-600 rtl:text-center;
+
+    & thead {
+      @apply sticky top-0 left-0 w-full h-full text-xs text-gray-700 uppercase shadow-md bg-gray-50;
+
+      & tr {
+        @apply text-center;
+
+        & th {
+          @apply px-6 py-3;
+        }
+      }
+    }
+
+    & tbody {
+      @apply bg-white;
+
+      & tr {
+        @apply text-center border-b odd:bg-white even:bg-gray-50;
+      }
+    }
+  }
+
+  & figure {
+    @apply flex items-center justify-center w-full h-full;
+
+    & svg {
+      @apply w-5 h-5;
+    }
+  }
+
+  &::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(173, 173, 173, 0.2);
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(211, 211, 211);
+    border-radius: 10px;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(211, 211, 211, 0.8);
+  }
+
+  &::-webkit-scrollbar-thumb:active {
+    background-color: rgba(211, 211, 211, 0.6);
+  }
+}
