@@ -1,11 +1,16 @@
+"use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import logo from "@/public/assets/logobigua.jpeg";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
 import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 import style from "./NavBar.module.css";
 
 export default function NavBar() {
+  const pathname = usePathname();
   const navItems = [
     {
       name: "Inicio",
@@ -31,7 +36,10 @@ export default function NavBar() {
       <section>
         <ul>
           {navItems.map((item, index) => (
-            <li key={index}>
+            <li
+              key={index}
+              className={clsx({ [style.active]: pathname === item.link })}
+            >
               <Link href={item.link} key={item.name}>
                 <p>{item.name}</p>
               </Link>

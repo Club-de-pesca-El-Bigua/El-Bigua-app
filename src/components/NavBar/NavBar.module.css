@@ -1,5 +1,5 @@
 .nav {
-  @apply sticky top-0 left-0 flex justify-between px-10 py-5 bg-white shadow;
+  @apply top-0 left-0 z-50 flex justify-between px-10 py-5 bg-white shadow;
 
   .logoContainer {
     @apply flex items-center gap-2;
@@ -16,10 +16,10 @@
       @apply flex items-center gap-x-5;
 
       & li {
-        @apply relative px-2 py-1 overflow-hidden text-lg duration-150 rounded-md cursor-pointer;
+        @apply relative flex items-center overflow-hidden text-lg duration-150 rounded-md cursor-pointer;
 
-        & p {
-          @apply relative z-10;
+        & a {
+          @apply z-10 px-2 py-1;
         }
 
         &::before {
@@ -29,6 +29,12 @@
 
         &:hover {
           @apply text-white;
+          &::before {
+            @apply h-full opacity-100;
+          }
+        }
+        &.active {
+          @apply text-white shadow-md;
           &::before {
             @apply h-full opacity-100;
           }

@@ -1,5 +1,5 @@
 import React from "react";
-import "@/components/Home/ShipSearchBar/ShipSearchBar.css";
+import "./ShipSearchBar.css";
 import { MagnifyingGlass } from "@phosphor-icons/react/dist/ssr";
 
 export default function ShipSearchBar() {
