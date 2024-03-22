@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import embarcacionValidationSchema from "@/components/Validaciones/validacionesEmbarcaciones";
+import embarcacionValidationSchema from "@/components/Forms/Validaciones/validacionesEmbarcaciones";
 import Link from "next/link";
 
 const AgregarEmbarcacionForm = () => {

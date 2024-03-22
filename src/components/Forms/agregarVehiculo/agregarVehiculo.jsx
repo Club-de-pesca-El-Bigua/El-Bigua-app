@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import vehiculoValidationSchema from "@/components/Validaciones/validacionesVehiculo";
+import vehiculoValidationSchema from "@/components/Forms/Validaciones/validacionesVehiculo";
 
 const AgregarVehiculoForm = () => {
   const handleSubmit = (values) => {
