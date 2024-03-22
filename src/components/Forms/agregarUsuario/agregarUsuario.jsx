@@ -3,13 +3,14 @@ import { Formik, Field, Form, ErrorMessage } from "formik";
 import Link from "next/link";
 import usuarioValidationSchema from "@/components/Validaciones/validacionesUsuario";
 
-const AddUserForm = ({ onSubmit }) => {
+//console.log("Esto es lastUserNumber", lastUserNumber);
+const AddUserForm = ({ onSubmit, lastUserNumber  }) => {
   return (
     <div>
       <h2>Ingresar datos del nuevo usuario</h2>
       <Formik
         initialValues={{
-          userNumber: "",
+          userNumber: lastUserNumber ? lastUserNumber.toString() : "", // Asigna el lastUserNumber al campo userNumber,
           name: "",
           lastname: "",
           dni: "",
@@ -25,7 +26,7 @@ const AddUserForm = ({ onSubmit }) => {
           <Form>
             <div>
               <label htmlFor="userNumber">N° de Socio</label>
-              <Field type="number" name="userNumber" />
+              <Field type="number" name="userNumber" readOnly />
               <ErrorMessage name="userNumber" component="div" className="error-message" />
             </div>
 
