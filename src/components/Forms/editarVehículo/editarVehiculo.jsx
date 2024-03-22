@@ -1,6 +1,6 @@
 import React from "react";
 import { Formik, Field, Form, ErrorMessage } from "formik";
-import vehiculoValidationSchema from "../../Validaciones/validacionesVehiculo";
+import vehiculoValidationSchema from "../Validaciones/validacionesVehiculo";
 
 const Vehiculo = ({ carData, editable, setShowSuccessMessage }) => {
   return (
