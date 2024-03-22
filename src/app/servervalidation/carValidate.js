@@ -35,7 +35,7 @@ const carSchemaValidate = Joi.object({
                     'string.base': 'La informacion adicional del vehiculo debe ser una cadena de texto.',
                     'string.empty': 'La informacion adicional del vehículo no puede estar vacia.'
                   }),
-    state: Joi.boolean()
+    state: Joi.boolean() 
               .required()
               .message({
                 'boolean.base':'El estado del vehículo debe ser un valor booleano.',
