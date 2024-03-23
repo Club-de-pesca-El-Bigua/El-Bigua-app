@@ -1,4 +1,5 @@
 import * as Yup from "yup";
+import moment from "moment";
 
 const embarcacionValidationSchema = Yup.object({
   registrationNumber: Yup.string()
@@ -8,11 +9,14 @@ const embarcacionValidationSchema = Yup.object({
     "La matrícula debe tener el formato correcto: dos letras, un guion y seis números"
   ),
   dueDate: Yup.string()
-    .required("La fecha de vencimiento es obligatoria")
-    .matches(
-      /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/,
-      "Formato de fecha inválido. Debe ser dd/mm/aaaa"
-    ),
+  .required("La fecha de vencimiento es obligatoria")
+  .matches(
+    /^(0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-\d{4}$/,
+    "Formato de fecha inválido. Debe ser dd/mm/yyyy"
+  )
+  .test('valid-date', 'La fecha de vencimiento no puede ser anterior a la fecha actual', (value) => {
+    return moment(value, 'DD-MM-YYYY', true).isSameOrAfter(moment(), 'day');
+  }),
   
   type: Yup.string().required("El tipo de embarcación es obligatorio")
   .matches(/^[a-zA-Z\s]+$/, "El tipo de embarcación solo puede contener letras y espacios")
@@ -50,17 +54,15 @@ const embarcacionValidationSchema = Yup.object({
       /^[a-zA-Z0-9]{30}$/,
       "Solo se permiten letras y números en el campo de compañía aseguradora"
     ),
-  dueDateInsurance: Yup.string()
+    dueDateInsurance: Yup.string()
     .required("La fecha de vencimiento del seguro es obligatoria")
-    .test(
-      "valid-format",
-      "Formato de fecha inválido. Debe ser DIA/MES/AÑO",
-      (value) => {
-        if (!value) return true;
-        const regex = /^(0[1-9]|[12][0-9]|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/;
-        return regex.test(value);
-      }
-    ),
+    .matches(
+      /^[0-9]{2}-[0-9]{2}-[0-9]{4}$/,
+      "Formato de fecha inválido. Debe ser dd-mm-yyyy"
+    )
+    .test("valid-date", "La fecha de vencimiento no puede ser anterior a la fecha actual", (value) => {
+      return moment(value, "DD-MM-YYYY", true).isSameOrAfter(moment(), "day");
+    }),
   info: Yup.string()
     .required("La Informacion es obligatorio")
     .matches(
