@@ -2,20 +2,29 @@ import connectDB from "@/libs/mongodb";
 import { NextResponse } from "next/server";
 import { UserModel } from "@/models/users";
 import userSchemaValidate from "@/app/servervalidation/userValidate";
+import getLastUserNumber  from "@/app/api/user/lastUserNumber"
+
 
 //METODOS DE CREACION Y BUSCAR UN CAR
 
 // Metodo PUT para crear user
 const POST = async (req, res) =>{
-
     await connectDB();
+    
     try {
+
+        const lastUserNumber = await  getLastUserNumber() 
+        console.log("Esto es el nuevo numero de socio",lastUserNumber)
+        
         const body = await req.json();
         console.log("Esto llega del body", body);
 
         const bodyValidate = await userSchemaValidate.validateAsync(body);
 
-        const newUser = await UserModel.create(bodyValidate)
+        const newUser = await UserModel.create({
+            ...bodyValidate,
+           userNumber: lastUserNumber // Incrementa el último userNumber en 1
+          });
         console.log("esto es lo creado en BD", newUser)
 
         return NextResponse.json( {data:newUser} , { status:201 } ) 

@@ -11,6 +11,13 @@ const shipSchemaValidate = Joi.object({
                                     'string.length': 'El número de registro debe tener exactamente 9 caracteres.',
                                     'string.pattern.base': '"La matrícula debe tener el formato correcto: dos letras, un guion y seis números'
                                 }),
+    userNumber: Joi.string()
+                                .pattern(/^\d{5}$/) // Expresión regular para exactamente 5 dígitos numéricos
+                                .required()
+                                .messages({
+                                    'string.base': 'El número de usuario debe ser una cadena de texto',
+                                    'string.pattern.base': 'El número de usuario debe contener exactamente 5 dígitos numéricos'
+                                }),
     dueDate:                Joi.date()
                                 .when('$strict', {
                                         is: true,
@@ -132,8 +139,8 @@ const shipSchemaValidate = Joi.object({
                                     'string.pattern.base': 'El campo Informacion no puede exceder de 30 caracteres'
                                 }), 
     state:                  Joi.boolean()
-                                .required()
-                                .default(true), 
+                                .required(),
+                                
 })
 
    

@@ -11,6 +11,13 @@ const carSchemaValidate = Joi.object({
                     'string.empty': 'La patente no puede estar vacía.',
                     'string.pattern.base': 'La patente debe terer un formato "aaa123" o "aa132aa".'
         }),
+    userNumber: Joi.string()
+                    .pattern(/^\d{5}$/) // Expresión regular para exactamente 5 dígitos numéricos
+                    .required()
+                    .messages({
+                        'string.base': 'El número de usuario debe ser una cadena de texto',
+                        'string.pattern.base': 'El número de usuario debe contener exactamente 5 dígitos numéricos'
+                    }),
     carBrand: Joi.string()
                  .required()
                  .message({
@@ -20,8 +27,8 @@ const carSchemaValidate = Joi.object({
     year: Joi.string()
              .required()
              .message({
-                'string.base': 'El año del vehículo debe ser una cadena de texto.',
-                'string.empty': 'El año del vehiculo no puede estar vacio.'
+                'string.base': 'El Modelo del vehículo debe ser una cadena de texto.',
+                'string.empty': 'El Modelo del vehiculo no puede estar vacio.'
              }),
     carColor: Joi.string()
                  .required()
@@ -35,11 +42,9 @@ const carSchemaValidate = Joi.object({
                     'string.base': 'La informacion adicional del vehiculo debe ser una cadena de texto.',
                     'string.empty': 'La informacion adicional del vehículo no puede estar vacia.'
                   }),
-    state: Joi.boolean() 
-              .required()
-              .message({
-                'boolean.base':'El estado del vehículo debe ser un valor booleano.',
-              }),
+    state:  Joi.boolean()
+                  .required(),
+              
 });
 
 export default carSchemaValidate;
