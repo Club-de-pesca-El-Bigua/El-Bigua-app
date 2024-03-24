@@ -18,7 +18,7 @@ const shipSchema = mongoose.Schema({
     insurer:            { type: String, required: [true, "Please complete the field"] }, //nombre del seguro
     dueDateInsurance:   { type: Date,   required: [true, "Please complete the field"] }, //vencimiento seguro
     info:               { type: String, required: [true, "Please complete the field"] }, //Observaciones 
-    state:              { type: Boolean, default: false },                                //Estado para validar 
+    state:              { type: Boolean, default: false },                                //Estado para validar asiganacion socio
 });
 
    // EmbarcaSchema.plugin(mongoosePaginate);

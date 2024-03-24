@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 const getLastUserNumber = async (res, req) => {
     try {
         const lastUser = await UserModel.findOne({}, {}, { sort: { 'userNumber': -1 } });
-        console.log("esto es numero de socio en la BD", lastUser.userNumber);
+        console.log("esto es Ultimo numero de socio en la BD", lastUser.userNumber);
 
         // Verifica si hay un usuario existente
         if (lastUser) {

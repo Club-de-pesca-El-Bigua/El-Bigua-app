@@ -1,5 +1,5 @@
 import Joi from "joi";
-import moment from "moment";
+
 
 // Define el esquema de validacion utilizando Joi
 const carSchemaValidate = Joi.object({
@@ -20,31 +20,28 @@ const carSchemaValidate = Joi.object({
                     }),
     carBrand: Joi.string()
                  .required()
-                 .message({
+                 .messages({
                     'string.base': 'La  marca del vehiculo debe ser una cadena de texto.',
                     'string.empty': 'La marca del vehiculo no puede estar vacía.'
         }),
     year: Joi.string()
              .required()
-             .message({
+             .messages({
                 'string.base': 'El Modelo del vehículo debe ser una cadena de texto.',
                 'string.empty': 'El Modelo del vehiculo no puede estar vacio.'
              }),
     carColor: Joi.string()
                  .required()
-                 .message({
+                 .messages({
                     'string.base': 'El color del vehiculo debe ser una cadena de texto.',
                     'string.empty': 'El color del vehiculo no puede estar vacio.'
                  }),
     infoCar: Joi.string()
                   .required()
-                  .message({
+                  .messages({
                     'string.base': 'La informacion adicional del vehiculo debe ser una cadena de texto.',
                     'string.empty': 'La informacion adicional del vehículo no puede estar vacia.'
                   }),
-    state:  Joi.boolean()
-                  .required(),
-              
 });
 
 export default carSchemaValidate;

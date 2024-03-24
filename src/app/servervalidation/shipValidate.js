@@ -137,10 +137,7 @@ const shipSchemaValidate = Joi.object({
                                     'string.base': 'El campo Informacion debe ser una cadena de texto.',
                                     'string.empty': 'El campo Informacion no puede estar vacío.',
                                     'string.pattern.base': 'El campo Informacion no puede exceder de 30 caracteres'
-                                }), 
-    state:                  Joi.boolean()
-                                .required(),
-                                
+                                }),                                 
 })
 
    
