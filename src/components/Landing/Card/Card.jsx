@@ -14,7 +14,11 @@ export default function Card(viewList) {
     const wb = XLSX.utils.book_new();
     const ws = XLSX.utils.table_to_sheet(document.querySelector('#false'));
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-    XLSX.writeFile(wb, 'egresos.xlsx');
+    
+    const today = new Date();
+    const filename = `movimientos_${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}.xlsx`;
+    
+    XLSX.writeFile(wb, filename);
   };
 
   const handleExport = () => {
