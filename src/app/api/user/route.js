@@ -5,7 +5,7 @@ import { ShipModel } from "@/models/ship";
 import { CarModel } from "@/models/cars";
 import userSchemaValidate from "@/app/servervalidation/userValidate";
 import getLastUserNumber  from "@/app/api/user/lastUserNumber"
-import next from "next";
+
 
 
 //METODOS DE CREACION Y BUSCAR UN CAR
