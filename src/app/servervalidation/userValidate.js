@@ -87,9 +87,8 @@ const userSchemaValidate = Joi.object({
                     .messages({
                         'string.pattern.base': 'La observacion tiene un longitud maxima de 50 caracteres',
                     }),
-  state:        Joi.boolean()
-                    .required()
-                    .default(true),
+
+                   
 })
 export default userSchemaValidate;
 

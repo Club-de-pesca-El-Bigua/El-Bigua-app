@@ -6,6 +6,7 @@ import mongoose from "mongoose";
 //Creamos el modelo de embarcacion a partir del Schema
 
 const shipSchema = mongoose.Schema({
+    userNumber:         { type: String, required: [true, "Please complete the field"] }, //Numero de Socio para relacionar
     registrationNumber: { type: String, required: [true, "Please complete the field"] }, // num de matricula
     dueDate:            { type: Date,   required: [true, "Please complete the field"] }, //vencimiento matricula
     type:               { type: String, required: [true, "Please complete the field"] }, //tipo de embarcacion
@@ -17,7 +18,7 @@ const shipSchema = mongoose.Schema({
     insurer:            { type: String, required: [true, "Please complete the field"] }, //nombre del seguro
     dueDateInsurance:   { type: Date,   required: [true, "Please complete the field"] }, //vencimiento seguro
     info:               { type: String, required: [true, "Please complete the field"] }, //Observaciones 
-    state:              { type: Boolean, default: true },                                //Estado para validar 
+    state:              { type: Boolean, default: false },                                //Estado para validar asiganacion socio
 });
 
    // EmbarcaSchema.plugin(mongoosePaginate);

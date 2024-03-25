@@ -3,7 +3,10 @@ import * as XLSX from 'xlsx';
 import style from "./Card.module.css";
 import Table from "./Table";
 
+
+
 export default function Card(viewList) {
+  console.log(viewList)
   const filteredTrue = viewList?.viewList.filter(
     (item) => item.status === true
   );

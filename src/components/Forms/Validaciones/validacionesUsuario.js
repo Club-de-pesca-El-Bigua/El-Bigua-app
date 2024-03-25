@@ -24,7 +24,7 @@ const usuarioValidationSchema = Yup.object({
     
   phone: Yup.string()
     .required("El teléfono es obligatorio")
-    .matches(/^\+[0-9]+$/, "Debe iniciar con el signo + y debe contener solo números") 
+    .matches(/^\+[0-9]+$/, "Debe iniciar con el signo + y debe contener solo números") // debe comenzar con el signo +
     .min(12, "El número de teléfono debe tener al menos 12 dígitos")
     .max(14, "El número de teléfono debe tener máximo 14 dígitos"),
   

@@ -1,21 +1,46 @@
 import connectDB from "@/libs/mongodb";
 import { NextResponse } from "next/server";
 import { ShipModel } from "@/models/ship";
+import { UserModel } from "@/models/users";
 import shipSchemaValidate from "@/app/servervalidation/shipValidate";
 
 // Método POST para Crear un barco en la BD si no existe
 const POST = async (req, res) => {
     await connectDB(); // validamos conexion con BD
     try {
+        //Extraigo el ultimo valor de Model User para asignar al UserShip
+        const lastUser = await UserModel.findOne({}, {}, { sort: { 'userNumber': -1 } });
+        console.log("Ultimo numero de socio en BD", lastUser.userNumber);
      
         const body = await req.json();
-        
         console.log("Esto llega por Body", body); // Validar lo que llega por Body
-        const validaBody = await shipSchemaValidate.validateAsync(body) //Validamos  el Schema de los datos recibidos
         
-        const newShip = await ShipModel.create(validaBody); // Crea la nueva embarcacion en MongoDB
+        
+        //Validamos  el Schema de los datos recibidos
+        const validaBody = await shipSchemaValidate.validateAsync({
+            ...body, 
+            userNumber: lastUser.userNumber
+        }) 
+
+        // Crea la nueva embarcacion en MongoDB
+        const newShip = await ShipModel.create({
+            ...validaBody,
+            userNumber: lastUser.userNumber,
+            state: true  // como se le asigno un socio su estado cambia de false a true
+        }); 
+        
+        // Cambiamos estado stateship a true ya que le asignamos un Ship 
+        const lastUsercar = await UserModel.findOne({}, {}, { sort: { 'userNumber': -1 } });
+        if (lastUsercar) {
+            const userUpdate = await UserModel.findByIdAndUpdate(
+                lastUser._id,
+                { $set: { stateship: true } },
+                { new: true } 
+            );
+            console.log("Actualizamos estado car", userUpdate.stateship)
+        }
         console.log("New Ship Creado ", newShip); // Imprimir para ver el resultado de crearla
-         return NextResponse.json({ data: newShip }, { status: 201 }); 
+         return NextResponse.json({ data: newShip}, { status: 201 }); 
        // Retornar un Status HTTP 201 y enviar el ID de la Nueva Embarcacion
 
     } catch (error) {
