@@ -14,8 +14,11 @@ export default function Table(flteredBy) {
     hour12: true,
   };
 
+  
   return (
-    <table className="">
+    <div>
+      
+    <table className="" >
       <thead className="">
         <tr>
           <th scope="col">Estado</th>
@@ -34,11 +37,12 @@ export default function Table(flteredBy) {
         </tr>
       </thead>
       <tbody>
-        {flteredBy?.flteredBy.map((item, index) => {
+        {flteredBy?.flteredBy?.map((item, index) => {
           const entryDate = new Date(item.entry.date);
+         
 
           return (
-            <tr key={index}>
+            <tr key={index} >
               <th scope="row">
                 <figure>{item.status ? AnchorLogo : SignOutLogo}</figure>
               </th>
@@ -50,7 +54,7 @@ export default function Table(flteredBy) {
                   Edit
                 </a>
               </td>
-              <td className="px-6 py-4">{item.boat.matricula}</td>
+              <td className="px-6 py-4">{item.boat.matricula} </td >
               <td className="px-6 py-4 max-w-24 text-balance">
                 {item.boat.type}
               </td>
@@ -70,9 +74,12 @@ export default function Table(flteredBy) {
                 {entryDate.toLocaleDateString("es-ES", dateOptions)}
               </td>
             </tr>
+           
           );
         })}
-      </tbody>
+      </tbody>      
     </table>
+    
+    </div>
   );
 }
