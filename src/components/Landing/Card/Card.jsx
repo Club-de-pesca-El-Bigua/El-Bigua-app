@@ -15,12 +15,48 @@ export default function Card(viewList) {
   );
   const exportToExcel = () => {
     const wb = XLSX.utils.book_new();
-    const ws = XLSX.utils.table_to_sheet(document.querySelector('#false'));
+    const wsData = [
+      [
+        "Matricula",
+        "Tipo",
+        "Color",
+        "Capacidad",
+        "Marca",
+        "Nom Embarcación",
+        "Nom Usuario",
+        "Telefono",
+        "DNI",
+        "Vehiculo",
+        "Fecha Ingreso",
+      ],
+      ...filteredFalse?.map(({ boat, user, entry }) => [
+        boat.matricula,
+        boat.type,
+        boat.color,
+        boat.capacity,
+        boat.brand,
+        boat.name,
+        user.name,
+        user.phone,
+        user.dni,
+        user.vehiculo,
+        new Date(entry.date).toLocaleString("es-ES", {
+          year: "numeric",
+          month: "short",
+          day: "numeric",
+          hour: "numeric",
+          minute: "numeric",
+          hour12: true,
+        }),
+      ]),
+    ];
+
+    const ws = XLSX.utils.aoa_to_sheet(wsData);
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-    
+
     const today = new Date();
     const filename = `movimientos_${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}.xlsx`;
-    
+
     XLSX.writeFile(wb, filename);
   };
 
