@@ -2,11 +2,10 @@
 import * as XLSX from 'xlsx';
 import style from "./Card.module.css";
 import Table from "./Table";
-
-
+import { Xanh_Mono } from 'next/font/google';
 
 export default function Card(viewList) {
-  console.log(viewList)
+  console.log(viewList);
   const filteredTrue = viewList?.viewList.filter(
     (item) => item.status === true
   );
@@ -16,19 +15,7 @@ export default function Card(viewList) {
   const exportToExcel = () => {
     const wb = XLSX.utils.book_new();
     const wsData = [
-      [
-        "Matricula",
-        "Tipo",
-        "Color",
-        "Capacidad",
-        "Marca",
-        "Nom Embarcación",
-        "Nom Usuario",
-        "Telefono",
-        "DNI",
-        "Vehiculo",
-        "Fecha Ingreso",
-      ],
+      ["Matricula", "Tipo", "Color del Casco", "Capacidad", "Marca", "Nom Embarcación", "Nom Usuario", "Telefono", "DNI", "Vehiculo", "Fecha Ingreso"],
       ...filteredFalse?.map(({ boat, user, entry }) => [
         boat.matricula,
         boat.type,
@@ -50,19 +37,21 @@ export default function Card(viewList) {
         }),
       ]),
     ];
-
+  
     const ws = XLSX.utils.aoa_to_sheet(wsData);
     XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
-
+  
     const today = new Date();
-    const filename = `movimientos_${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}.xlsx`;
-
+    const filename = `El-Bigua_movimientos_${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}.xlsx`;
+  
     XLSX.writeFile(wb, filename);
   };
+  
+  
 
   const handleExport = () => {
     exportToExcel();
-  }
+  };
 
   return (
     <div className="flex flex-col gap-10">

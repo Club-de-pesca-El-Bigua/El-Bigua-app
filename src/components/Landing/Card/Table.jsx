@@ -25,7 +25,7 @@ export default function Table(flteredBy) {
           <th scope="col">Accion</th>
           <th scope="col">Matricula</th>
           <th scope="col">Tipo</th>
-          <th scope="col">Color</th>
+          <th scope="col">Color del Casco</th>
           <th scope="col">Capacidad</th>
           <th scope="col">Marca</th>
           <th scope="col">Nom Embarcación</th>
