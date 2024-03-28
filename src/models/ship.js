@@ -19,31 +19,9 @@ const shipSchema = mongoose.Schema({
     dueDateInsurance:   { type: Date,   required: [true, "Please complete the field"] }, //vencimiento seguro
     info:               { type: String, required: [true, "Please complete the field"] }, //Observaciones 
     state:              { type: Boolean, default: false },                                //Estado para validar asiganacion socio
+    userId:             { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // ID del usuario al que pertenece la embarcación
 });
 
    // EmbarcaSchema.plugin(mongoosePaginate);
 
    export const ShipModel = mongoose.models.Ship || mongoose.model('Ship', shipSchema);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
-
-
-
-
