@@ -5,7 +5,7 @@ import { ShipModel } from "@/models/ship";
 import { CarModel } from "@/models/cars";
 import userSchemaValidate from "@/app/servervalidation/userValidate";
 import getLastUserNumber  from "@/app/api/user/lastUserNumber"
-
+import {getUser} from "./[id]/route"
 
 
 //METODOS DE CREACION Y BUSCAR UN CAR
@@ -86,4 +86,16 @@ const GET = async (req, res) =>{
     }
 }
 
-module.exports = { POST, GET }
+const GET_USER_WITH_RELATIONSHIPS = async (req, res) => {
+    const { userId } = req.params;
+  
+    try {
+      const user = await getUser(userId);
+      res.status(200).json(user);
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: "Error al obtener el usuario" });
+    }
+  };
+
+module.exports = { POST, GET, GET_USER_WITH_RELATIONSHIPS }
