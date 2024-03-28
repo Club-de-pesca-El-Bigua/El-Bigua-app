@@ -12,6 +12,8 @@ const userSchema = mongoose.Schema({
     observations        : { type: String, required: [true, "Please complete the field"] }, //Observaciones del cliente
     statecar            : { type: Boolean, default: false },
     stateship           : { type: Boolean, default: false },
+    shipIds             : [{ type: mongoose.Schema.Types.ObjectId, ref: "Ship" }], // Array de IDs de las embarcaciones
+    carIds              : [{ type: mongoose.Schema.Types.ObjectId, ref: "Car" }], // Array de IDs de los autos
 });
 
 export const UserModel = mongoose.models.User|| mongoose.model('User', userSchema);

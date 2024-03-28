@@ -11,30 +11,9 @@ const carSchema = mongoose.Schema({
     carColor  : { type: String, required: [true, "Please complete the field"] },    //color del vehiculo
     infoCar   : { type: String, required: [true, "Please complete the field"] },    //informacion adicional 
     state     : { type: Boolean, default: [false, "Please complete the field"] }, // Cambié defaultValue por default
-
+    userId    : { type: mongoose.Schema.Types.ObjectId, ref: "User" }, // ID del usuario al que pertenece el auto
     });
 
 //carSchema.plugin(mongoosePaginate);
 
 export const CarModel = mongoose.models.Car || mongoose.model('Car', carSchema);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
