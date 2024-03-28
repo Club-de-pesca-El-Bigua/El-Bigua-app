@@ -66,4 +66,14 @@ const PUT = async (request, { params }) => {
     }
 };
 
-module.exports = {GET, DELETE, PUT}
+const getUser = async (userId) => {
+    const user = await UserModel.findById(userId).populate("shipIds").populate("carIds");
+  
+    if (!user) {
+      throw new Error("Usuario no encontrado");
+    }
+  
+    return user;
+  };
+
+module.exports = {GET, DELETE, PUT, getUser}
